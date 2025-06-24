@@ -1,0 +1,10 @@
+[project]
+name = "ehrql-llm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aider-chat>=0.84.0",
+    "black>=25.1.0",
+]

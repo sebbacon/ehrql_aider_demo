@@ -98,7 +98,7 @@ latest_hba1c = (
 # Denominator rules for DM020
 # Rule 1: Reject if moderate or severe frailty
 all_frailty_codelist = (
-    mild_frailty_codelist | moderate_frailty_codelist | severe_frailty_codelist
+    mild_frailty_codelist + moderate_frailty_codelist + severe_frailty_codelist
 )
 latest_frailty_event = (
     clinical_events.where(clinical_events.snomedct_code.is_in(all_frailty_codelist))
@@ -107,7 +107,7 @@ latest_frailty_event = (
     .last_for_patient()
 )
 is_moderate_or_severe_frail = latest_frailty_event.snomedct_code.is_in(
-    moderate_frailty_codelist | severe_frailty_codelist
+    moderate_frailty_codelist + severe_frailty_codelist
 )
 population_rule_1 = dataset.dm_reg & ~is_moderate_or_severe_frail
 

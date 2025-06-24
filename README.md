@@ -1,4 +1,4 @@
-An example session using [`aider`]((https://aider.chat) to write ehrQL.
+An example session using [`aider`](https://aider.chat) to write ehrQL.
 
 It ends with an attempt to write a complex rule from the Diabetes QOF definitions ([`DIABETES.md`](./DIABETES.md))
 

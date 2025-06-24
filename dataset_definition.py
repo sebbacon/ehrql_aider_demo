@@ -64,9 +64,15 @@ dataset.dm_reg = has_unresolved_diabetes & is_over_16
 # preceding 12 months.
 
 # Define codelists for DM020 from 3.2.3 Clinical code clusters
-mild_frailty_codelist = codelist_from_csv("codelists/mild_frailty_qof.csv", column="code")
-moderate_frailty_codelist = codelist_from_csv("codelists/moderate_frailty_qof.csv", column="code")
-severe_frailty_codelist = codelist_from_csv("codelists/severe_frailty_qof.csv", column="code")
+mild_frailty_codelist = codelist_from_csv(
+    "codelists/mild_frailty_qof.csv", column="code"
+)
+moderate_frailty_codelist = codelist_from_csv(
+    "codelists/moderate_frailty_qof.csv", column="code"
+)
+severe_frailty_codelist = codelist_from_csv(
+    "codelists/severe_frailty_qof.csv", column="code"
+)
 ifcchbam_codelist = codelist_from_csv("codelists/ifcchbam_cod.csv", column="code")
 serfruc_codelist = codelist_from_csv("codelists/serfruc_cod.csv", column="code")
 dmmax_codelist = codelist_from_csv("codelists/dmmax_cod.csv", column="code")
@@ -148,7 +154,9 @@ dmpcapu_dat = (
     .last_for_patient()
     .date
 )
-rejected_by_rule_5 = dmpcapu_dat.is_not_null() & (dmpcapu_dat > twelve_months_before_pped)
+rejected_by_rule_5 = dmpcapu_dat.is_not_null() & (
+    dmpcapu_dat > twelve_months_before_pped
+)
 population_after_rule_5 = population_after_rule_4 & ~rejected_by_rule_5
 
 # Rule 6: Reject if blood test declined
@@ -188,9 +196,7 @@ dminvite1_dat = (
 dminvite2_dat = (
     clinical_events.where(clinical_events.snomedct_code.is_in(dminvite_codelist))
     .where(
-        clinical_events.date.is_on_or_between(
-            dminvite1_dat + days(7), achievement_date
-        )
+        clinical_events.date.is_on_or_between(dminvite1_dat + days(7), achievement_date)
     )
     .sort_by(clinical_events.date)
     .first_for_patient()

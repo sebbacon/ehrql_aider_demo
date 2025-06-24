@@ -17,9 +17,7 @@ achievement_date = index_date
 # DM_COD: Diabetes mellitus codes
 dm_codelist = codelist_from_csv("codelists/dm_cod.csv", column="code")
 # DMRES_COD: Diabetes resolved codes
-dm_resolved_codelist = codelist_from_csv(
-    "codelists/dm_resolved_cod.csv", column="code"
-)
+dm_resolved_codelist = codelist_from_csv("codelists/dm_resolved_cod.csv", column="code")
 
 # 3.2.4 Clinical data extraction criteria
 # DMLAT_DAT: Date of the most recent diabetes diagnosis up to and including the
